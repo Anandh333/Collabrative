@@ -92,21 +92,30 @@ const Navbar = () => {
               {/* Dropdown menu */}
               {isProfileDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 border border-gray-200 dark:border-gray-700">
-                  <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                  <div className="px-4 py-3">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">
+                      {user?.name}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       {user?.email}
                     </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 capitalize">
+                      Role: {user?.role}
+                    </p>
                   </div>
-                  <button
-                    onClick={handleLogout}
-                    className="w-full flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
-                  >
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Logout
-                  </button>
                 </div>
               )}
             </div>
+
+            {/* Logout button */}
+            <button
+              onClick={handleLogout}
+              className="hidden md:flex items-center px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 transition-colors"
+              title="Logout"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              <span>Logout</span>
+            </button>
 
             {/* Mobile menu button */}
             <button
@@ -144,6 +153,15 @@ const Navbar = () => {
                 {label}
               </Link>
             ))}
+            
+            {/* Mobile logout button */}
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center px-3 py-2 rounded-lg text-base font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+            >
+              <LogOut className="w-5 h-5 mr-3" />
+              Logout
+            </button>
           </div>
         </div>
       )}
